@@ -1,0 +1,2 @@
+net.hafssa.dao.DaoImpl
+net.hafssa.metier.MetierImpl
