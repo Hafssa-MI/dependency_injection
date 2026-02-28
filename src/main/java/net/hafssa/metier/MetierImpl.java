@@ -1,8 +1,13 @@
 package net.hafssa.metier;
 
 import net.hafssa.dao.IDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component("metier")
 public class MetierImpl implements IMetier{
+    @Autowired @Qualifier("d2")
     private IDao dao;
     @Override
     public double calcul() {
@@ -26,4 +31,9 @@ public class MetierImpl implements IMetier{
     public void setDao(IDao dao) {
         this.dao = dao;
     }
+    /** Si on supprimer le @Autowired en haut donc on utilisera le constructeur.
+     * Mais si on a deux bean on doit dans le constructeur ajouter la notation
+     * @Qualifier et on ajoute dans le fichier config.xml un constructor argument :
+     * <constructor-arg ref="d"></constructor-arg>
+     * */
 }
